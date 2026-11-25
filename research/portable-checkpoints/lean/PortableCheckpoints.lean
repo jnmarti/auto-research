@@ -1,3 +1,4 @@
+import Mathlib.Analysis.Calculus.Deriv.Slope
 import Mathlib.MeasureTheory.Integral.Bochner.Set
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
@@ -366,5 +367,54 @@ theorem paper_example :
       w₀ = 155 / 1000 ∧ w₁ = 1662 / 10000 ∧
       p₁ < p₀ ∧ w₀ < w₁ := by
   norm_num [cutoff, fallback]
+
+end PortableCheckpoints
+
+noncomputable section
+open MeasureTheory Set Filter
+open scoped Topology
+
+namespace PortableCheckpoints
+
+/-- Derive the rent derivative from the actual expected positive part.
+The two support inequalities trap every secant between its endpoint CDF
+values, so continuity of the CDF at the cutoff suffices. -/
+theorem rent_hasDerivAt (μ : Measure ℝ) [IsProbabilityMeasure μ]
+    (hC : ∀ᵐ c ∂μ, 0 ≤ c) (b : ℝ) (hF : ContinuousAt (cdf μ) b) :
+    HasDerivAt (rent μ) (cdf μ b) b := by
+  apply hasDerivAt_iff_tendsto_slope.mpr
+  have hc : Tendsto (fun _ : ℝ => cdf μ b) (𝓝[≠] b) (𝓝 (cdf μ b)) :=
+    tendsto_const_nhds
+  have ht : Tendsto (cdf μ) (𝓝[≠] b) (𝓝 (cdf μ b)) :=
+    hF.tendsto.mono_left nhdsWithin_le_nhds
+  have hl : Tendsto (fun x => min (cdf μ b) (cdf μ x)) (𝓝[≠] b) (𝓝 (cdf μ b)) := by
+    simpa using hc.min ht
+  have hu : Tendsto (fun x => max (cdf μ b) (cdf μ x)) (𝓝[≠] b) (𝓝 (cdf μ b)) := by
+    simpa using hc.max ht
+  have hbnd : ∀ᶠ x in 𝓝[≠] b,
+      min (cdf μ b) (cdf μ x) ≤ slope (rent μ) b x ∧
+        slope (rent μ) b x ≤ max (cdf μ b) (cdf μ x) := by
+    filter_upwards [self_mem_nhdsWithin] with x hx
+    have hne : x ≠ b := hx
+    have h₁ := rent_support μ hC x b
+    have h₂ := rent_support μ hC b x
+    rw [slope_def_field]
+    rcases lt_or_gt_of_ne hne with h | h
+    · have hxb : 0 < b - x := sub_pos.mpr h
+      have hs : (rent μ x - rent μ b) / (x - b) =
+          (rent μ b - rent μ x) / (b - x) := by
+        rw [show rent μ x - rent μ b = -(rent μ b - rent μ x) by ring,
+          show x - b = -(b - x) by ring, neg_div_neg_eq]
+      rw [hs]
+      refine ⟨(min_le_right _ _).trans ((le_div_iff₀ hxb).mpr ?_),
+        ((div_le_iff₀ hxb).mpr ?_).trans (le_max_left _ _)⟩
+      · nlinarith
+      · nlinarith
+    · have hbx : 0 < x - b := sub_pos.mpr h
+      refine ⟨(min_le_left _ _).trans ((le_div_iff₀ hbx).mpr ?_),
+        ((div_le_iff₀ hbx).mpr ?_).trans (le_max_right _ _)⟩
+      · nlinarith
+      · nlinarith
+  exact hl.squeeze' hu (hbnd.mono (fun _ h => h.1)) (hbnd.mono (fun _ h => h.2))
 
 end PortableCheckpoints
