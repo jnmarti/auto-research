@@ -7,3 +7,5 @@
 **Status.** Short internal theory draft. See [PDF](paper.pdf), [TeX](paper.tex), [checks](check_model.py), and [venue and provenance notes](SUBMISSION.md).
 
 **Reproduce.** From this directory, with Python 3, Make, latexmk and a standard pdfLaTeX distribution (geometry, AMS packages, natbib, hyperref), run `make check` and `make -B`. No external data or network access is needed. The script tests the example with exact rational arithmetic and checks grid deviations; it does not replace the proofs. The build uses a fixed source timestamp; PDF bytes may differ across TeX versions.
+
+**Lean companion.** See [the proofs and their scope](lean/). The companion checks the posted contracts, the surplus and completion comparisons, and the uniform example. With the pinned toolchain, run `lake env python3 scripts/check_lean.py --fetch-cache` from the repository root.

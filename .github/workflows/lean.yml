@@ -1,0 +1,30 @@
+name: Lean proof checks
+
+# Run on every PR so this job can be made a required check without path-filter
+# skips leaving it pending. This also covers toolchain and checker changes.
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean:
+    name: Check Lean proofs
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install pinned Lean toolchain
+        uses: leanprover/lean-action@fe408643ea7367d8c0404a8be3975bb145f5fb64 # v1.7.0
+        with:
+          auto-config: 'false'
+          use-mathlib-cache: 'false'
+          use-github-cache: 'false'
+      - name: Compile and audit research proofs
+        run: lake env python3 scripts/check_lean.py --fetch-cache
