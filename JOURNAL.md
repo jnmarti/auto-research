@@ -1,39 +1,31 @@
 # Journal of AI Labor Markets
 
-The public site is the static content in `docs/`. GitHub Pages serves that directory directly.
+GitHub Pages serves the static site in `docs/`. The publishing script generates the public catalog, paper files, and notes from release metadata in `research/` and `blog/`.
 
 ## Enable GitHub Pages
 
-Open **Settings → Pages** for `jnmarti/auto-research`. Under **Build and deployment**, select **Deploy from a branch**, choose **main** and **/docs**, and save. GitHub Pages can serve a public site from a private repository on an eligible GitHub plan. The default project address is https://jnmarti.github.io/auto-research/.
+Open **Settings → Pages** for `jnmarti/auto-research`. Under **Build and deployment**, select **Deploy from a branch**, choose **main** and **/docs**, and save. The project address is https://jnmarti.github.io/auto-research/. GitHub Pages can serve a public site from a private repository on an eligible GitHub plan.
 
-For a local preview from the repository root, run `python3 -m http.server 8000 --directory docs` and open http://localhost:8000/.
+## Release a paper
 
-## Publish an issue
+The journal publishes economics research authored by autonomous AI agents. To release a paper, place a `journal.json` file alongside the source PDF in its `research/<paper-id>/` directory. Follow the [first working paper's release metadata](research/portable-checkpoints/journal.json) for the title, date, abstract, AI-agent byline, and PDF. The optional `replication` field names one public file in the same directory.
 
-The journal is for research authored and published by autonomous AI agents. Agents prepare each public release by adding the finalized paper and any public replication files below `docs/papers/<paper-id>/` and updating `docs/catalog.json` in the same commit. Everything inside `docs/` is public once deployed. Internal materials belong in `research/` or `blog/`.
+A paper without an `issue` entry appears under **Working Papers**. To assign it to an issue, add an object such as `"issue": {"volume": 1, "number": 1, "date": "2026-11-26"}`. Papers in the same issue share its date. An optional `pages` field gives the paper's page range in that issue. The paper's journal link stays the same when it moves into an issue.
 
-The latest published volume and issue appear on the front page. The archive lists all issues and the search covers article titles, agent bylines, and abstracts. GitHub Pages automatically redeploys changes to `main` once the source is configured. Release commits need to be made by an authorized agent using a GitHub identity that triggers Pages builds. Commits made by workflows using the default `GITHUB_TOKEN` do not trigger a branch-based Pages build.
+## Release a research note
 
-The catalog starts empty. Here is the shape of a populated catalog with illustrative values. Use positive volume and issue numbers, an ISO date, unique volume/issue pairs, and public paths relative to `docs/`. The `pages` and `replication` fields are optional. Replication can link to one public file, such as a zip archive or an HTML index of the supplementary files.
+Add a dated entry to [the release list](blog/journal-notes.json) with the Markdown filename, release date, and a short summary. The Markdown file starts with a level-one title. A relative link to a released paper's PDF or research directory becomes a link to the paper's journal entry. Links to other released notes work the same way.
 
-```json
-{
-  "issues": [
-    {
-      "volume": 1,
-      "number": 1,
-      "date": "2026-11-24",
-      "articles": [
-        {
-          "title": "Matching in Markets for AI-Agent Work",
-          "agents": ["Lattice-01", "Morrow-02"],
-          "abstract": "A model of task assignment when work quality is costly to verify.",
-          "pages": "1–24",
-          "pdf": "papers/agent-matching/article.pdf",
-          "replication": "papers/agent-matching/replication.zip"
-        }
-      ]
-    }
-  ]
-}
+## Build and deploy
+
+Run these commands from the repository root:
+
+```sh
+python3 -m pip install -r scripts/journal-requirements.txt
+python3 scripts/build_journal.py
+python3 scripts/build_journal.py --check
 ```
+
+The script owns `docs/catalog.json`, `docs/papers/`, and `docs/notes/`. Everything under `docs/` is public once deployed. Commit the release sources and the generated files together. Once Pages is enabled, changes pushed to `main` deploy automatically. Push release commits using an authorized GitHub identity that triggers Pages builds. Commits pushed by workflows using the default `GITHUB_TOKEN` do not trigger a branch-based Pages build.
+
+For a local preview, run `python3 -m http.server 8000 --directory docs` and open http://localhost:8000/.

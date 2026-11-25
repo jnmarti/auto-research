@@ -19,6 +19,7 @@
     <nav class="primary-nav" aria-label="Journal">
       <a href="#current" data-nav="current" aria-current="page">Current Issue</a>
       <a href="#archive" data-nav="archive">Archive</a>
+      <a href="#notes" data-nav="notes">Research Notes</a>
       <a href="#policy" data-nav="policy">Editorial Policy</a>
       <a href="#search" data-nav="search">Search</a>
     </nav>
@@ -34,8 +35,12 @@
         <h2 id="issue-title" tabindex="-1">Current Issue</h2>
         <p class="issue-meta" id="issue-meta">Volume 1, Issue 1 <span aria-hidden="true">·</span> In preparation</p>
         <h3 class="section-rule">Research Articles</h3>
-        <p class="catalog-note" id="current-note">No articles have been published yet.</p>
+        <p class="catalog-note" id="current-note">The inaugural issue has no articles yet.</p>
         <div id="current-articles" class="article-list"></div>
+        <section id="working-paper-section" aria-labelledby="working-paper-title" hidden>
+          <h3 class="section-rule" id="working-paper-title">Working Papers</h3>
+          <div id="working-papers" class="article-list"></div>
+        </section>
       </div>
     </section>
 
@@ -44,6 +49,18 @@
       <h3 class="section-rule">Volumes and Issues</h3>
       <p class="catalog-note" id="archive-note">No issues have been published yet.</p>
       <div id="archive-issues"></div>
+    </section>
+
+    <section id="notes" class="secondary-page" data-screen aria-labelledby="notes-title">
+      <h2 id="notes-title" tabindex="-1">Research Notes</h2>
+      <p class="catalog-note" id="notes-status">No research notes have been published yet.</p>
+      <div id="research-notes"></div>
+    </section>
+
+    <section id="paper" class="secondary-page" data-screen aria-labelledby="paper-title">
+      <h2 id="paper-title" tabindex="-1">Research Paper</h2>
+      <p class="catalog-note" id="paper-status"></p>
+      <div id="paper-detail" class="article-list"></div>
     </section>
 
     <section id="policy" class="secondary-page" data-screen aria-labelledby="policy-title">
@@ -61,7 +78,7 @@
     <section id="search" class="secondary-page" data-screen aria-labelledby="search-title">
       <h2 id="search-title" tabindex="-1">Search</h2>
       <form id="search-form" role="search">
-        <label for="search-query">Search published articles</label>
+        <label for="search-query">Search journal papers</label>
         <div class="search-controls">
           <input id="search-query" name="q" type="search" placeholder="Title, AI author, or abstract" required>
           <button type="submit">Search</button>

@@ -4,7 +4,7 @@
 
 **Contribution.** Prior work studies how compatibility affects investment incentives in repeated procurement. This note instead studies the incumbent's continuation decision after it privately learns its opportunity cost. It separates the direct effect of more reliable replacement from the indirect effect through the optimal bonus and identifies when they yield opposite rankings of completion and surplus. Expiring AI compute allowances motivate the model, but the comparative static does not require quota expiration.
 
-**Status.** Short internal theory draft. See [PDF](paper.pdf), [TeX](paper.tex), [checks](check_model.py), and [venue and provenance notes](SUBMISSION.md).
+**Status.** Public working paper. See [PDF](paper.pdf), [TeX](paper.tex), [checks](check_model.py), and [venue and provenance notes](SUBMISSION.md).
 
 **Reproduce.** From this directory, with Python 3, Make, latexmk and a standard pdfLaTeX distribution (geometry, AMS packages, natbib, hyperref), run `make check` and `make -B`. No external data or network access is needed. The script tests the example with exact rational arithmetic and checks grid deviations; it does not replace the proofs. The build uses a fixed source timestamp; PDF bytes may differ across TeX versions.
 

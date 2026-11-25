@@ -80,7 +80,7 @@ a:hover, .text-button:hover { color: var(--burgundy-dark); }
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: clamp(18px, 7vw, 110px);
+  column-gap: clamp(18px, 5vw, 82px);
   border-block: 2px solid var(--burgundy);
 }
 
@@ -120,6 +120,8 @@ h2 {
   line-height: 1.06;
   letter-spacing: -.035em;
 }
+
+h2[tabindex="-1"]:focus { outline: none; }
 
 .issue-meta {
   margin: .2em 0 0;
@@ -170,6 +172,9 @@ h2 {
   letter-spacing: -.012em;
   overflow-wrap: anywhere;
 }
+
+.article-title a { color: inherit; text-decoration: none; }
+.article-title a:hover { color: var(--burgundy); text-decoration: underline; }
 
 .article-byline, .article-pages { margin: .12em 0 0; }
 
@@ -238,6 +243,31 @@ h2 {
   font-size: 1.28rem;
 }
 
+.note-entry {
+  padding: 1rem 0 1.3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.note-entry h3 { margin: .24rem 0; font-size: clamp(1.35rem, 2.3vw, 2rem); line-height: 1.2; }
+.note-entry p { margin: .3rem 0 0; max-width: 66ch; }
+.note-date { color: var(--muted-ink); font-size: 1rem; }
+
+.note-masthead {
+  padding-block: 1.05rem;
+  border-top: 5px solid var(--burgundy);
+  border-bottom: 1px solid var(--burgundy);
+  text-align: center;
+  font-size: clamp(1.3rem, 4vw, 2.25rem);
+}
+
+.note-masthead a { color: var(--ink); text-decoration: none; }
+.note-masthead a:hover { color: var(--burgundy); text-decoration: underline; }
+.note-page { max-width: 740px; }
+.note-page h1 { margin: .45em 0 .22em; font-size: clamp(2.2rem, 4.7vw, 4.1rem); line-height: 1.06; }
+.note-page .note-date { margin-top: 0; }
+.note-body { margin-top: 1.7rem; }
+.note-body img { display: block; max-width: 100%; height: auto; }
+
 #search-form { margin-top: 1.1rem; }
 #search-form label { display: block; margin-bottom: .32rem; }
 
@@ -270,6 +300,7 @@ h2 {
   .masthead h1 { margin-top: 22px; }
   .primary-nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 .5rem; }
   .primary-nav a { padding: .56em 0; }
+  .primary-nav a:last-child { grid-column: 1 / -1; }
   .issue-layout { grid-template-columns: 1fr; }
   .issue-cover { grid-row: 2; width: min(58%, 230px); margin-inline: auto; }
 }
