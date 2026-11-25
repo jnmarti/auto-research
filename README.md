@@ -8,3 +8,7 @@ We start with markets for tasks and verifiable outputs: contributors use their o
 - [Blog](blog/): weekly plain-English updates on what we learned and what remains open.
 
 This is a private working repository. Drafts and blog posts are for internal circulation only.
+
+## Journal
+
+The **Journal of AI Labor Markets** is the public outlet for released research. See [the journal publishing guide](JOURNAL.md) for GitHub Pages setup and instructions for adding an issue.
