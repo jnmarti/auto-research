@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[authoryear,round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{proposition}{Proposition}
+\title{Portable Checkpoints Can Reduce Completion}
+\author{}
+\date{Internal working draft, November 25, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A sponsor hires an AI user whose expiring compute allowance has a privately observed alternative use. A portable checkpoint lets another user finish. Better backup access increases surplus but can reduce completion when the bonus cannot depend on backup availability and the original user cannot be recalled.
+\end{abstract}
+\noindent\textit{JEL classification:} D82, D86, O33.\quad
+\textit{Keywords:} AI agents, procurement, outside options, portability.
+
+\section{Introduction}
+A research project can recruit AI users with unused subscription allowances and pay for verified work rather than buy or transfer the allowances themselves. Users can still withdraw when their own work becomes more valuable. A portable checkpoint, such as a verified lemma and its accompanying proof file, lets someone else resume the work. We show why it need not raise the number of completed projects: the sponsor responds to a better fallback by lowering the original user's bonus, and the fallback need not cover the resulting exits.
+
+The closest procurement comparison is \citet{andrade}, who study exit after private forecasts of subsequently verifiable costs. Here the relevant realized cost is the user's private value of the user's own work, and the question is how reassignment changes completion. \citet{green} examine milestone deadlines with privately observed progress; our checkpoint is observable and usable by a replacement. \citet{zhu} studies provider-side inference capacity. We instead contract for output from users who retain control of their remaining quota. The result applies more generally to any procurement with a transferable intermediate output and a bonus fixed before backup availability can be used.
+
+\section{Model}
+A risk-neutral sponsor values a verified checkpoint at $s\geq 0$ and a completed project at an additional $V>0$. A risk-neutral user can produce the checkpoint at known cost $a$. Once it is verified, the user learns the opportunity cost $C\geq 0$ of spending its remaining allowance on the project rather than on the user's own work. The allowance expires at the end of this stage. Let $C$ have continuous distribution $F$, with continuous positive density $f$ on $(0,V)$. Outside utility is normalized to zero after accounting for the value of retaining the allowance.
+
+The sponsor commits to a nonnegative payment $r$ for the verified checkpoint and a nonnegative bonus $b$ for completion by this user. The user can quit after producing the checkpoint, retaining $r$. If the user quits, the sponsor can assign the checkpoint to a replacement at a fixed all-in cost $k\in(0,V)$, with probability $q\in[0,1]$ of finding one before the deadline, independently of $C$. The user's decision precedes the revelation of replacement availability. If no replacement is found, the user cannot be recalled before the deadline. The sponsor's gross payoff from a completion is the same regardless of who finishes it. For the welfare comparison, $k$ is also the replacement's real opportunity cost. No quota itself is traded.
+
+The primary user continues iff $C\leq b$. Let $R(b)=\mathbb E[(b-C)_+]$. Participation before creating the checkpoint requires $r+R(b)\geq a$. We select participation and performance at indifference and assume $a\geq R(V)$ and $s-a+R(V)>0$, so the checkpoint payment can extract the user's ex ante rent at all relevant bonuses and starting the project is profitable even without a backup. Section~\ref{sec:timing} discusses when the information arrives.
+
+\section{Optimal bonus and completion}
+\begin{proposition}
+An optimal contract within the posted checkpoint-payment and completion-bonus protocol has
+\[
+ b^*(q)=V-q(V-k),\qquad r^*(q)=a-R(b^*(q)).
+\]
+The sponsor's payoff is $s-a+q(V-k)+R(b^*(q))$, increasing in $q$ and equal to total expected surplus. The probability of completion is
+\[
+ P(q)=q+(1-q)F(b^*(q)).
+\]
+For interior $q$, it falls locally if and only if
+\[
+ (1-q)(V-k)f(b^*(q))>1-F(b^*(q)).
+\]
+\end{proposition}
+
+\begin{proof}
+Conditional on the checkpoint, the sponsor earns $V-b$ when the incumbent finishes and expected $q(V-k)$ when the incumbent quits. Any $b>V$ is weakly dominated by $V$: raising $b$ from $V$ raises continuation payments by at least $R(b)-R(V)$, while the associated cut in $r$ is at most that amount. More explicitly, writing $K=V-q(V-k)$, the payoff change is bounded above by
+\[
+ (K-b)F(b)-(K-V)F(V)+\int_V^b F(t)\,dt\leq 0,
+\]
+since $K\leq V$ and $F(t)\leq F(b)$ on $[V,b]$. For $b\leq V$, substitute $r=a-R(b)$ into the sponsor payoff to obtain $s-a+q(V-k)+(K-b)F(b)+R(b)$. Its derivative in $b$ is $(K-b)f(b)$, so its maximum is at $K$. At the optimum the user's expected utility is zero and the replacement receives its opportunity cost, yielding equality with total surplus. Differentiating the optimized payoff gives $(V-k)[1-F(K)]>0$. Completion requires success by the original user or a successful handoff, giving $P$ and the stated derivative condition.
+\end{proof}
+
+A better fallback raises completion at any fixed bonus. Reoptimizing the bonus changes which users stay: when many users have costs near the cutoff, the reduction in primary completions can exceed the gain from backup completions. For instance, take $C\sim U[0,1]$, $V=0.9$, $k=0.1$, $a=0.45$, and $s=0.2$. Raising $q$ from zero to $0.1$ cuts the bonus from $0.9$ to $0.82$ and completion from $90\%$ to $83.8\%$, while raising surplus from $0.155$ to $0.1662$. Since $P(1)=1$, completion is nonmonotone in this example.
+
+\paragraph{Role of the checkpoint cost.}
+For $C\sim U[0,M]$ with $M>V$, relax $a\geq R(V)$ and consider offers conditional on starting. Set $A=\sqrt{2Ma}$. The optimum bonus is $\max\{K/2,\min\{A,K\}\}$. Indeed, with $r=\max\{0,a-R(b)\}$ the objective has derivative $(K-b)/M$ below $A$ and $(K-2b)/M$ above $A$, and bonuses above $V$ remain dominated. In the interior of the two regions where $b^*=A$ or $K/2$, completion rises with $q$: the derivatives are $1-A/M$ and $1-[k+2(1-q)(V-k)]/(2M)$, respectively, both positive in their regions. A decline is possible only where $b^*=K$, because only there does the bonus fall one-for-one with the expected value of the fallback. Thus the reversal survives on an open set of parameters but does not occur for arbitrarily low checkpoint costs.
+
+\section{When backup availability is known}\label{sec:timing}
+Suppose instead that the availability of a replacement is publicly observed before the continuation decision, and the sponsor can commit to a bonus contingent on it. If no replacement is available, it posts $V$; otherwise it posts $k$. The same participation constraint binds with a single checkpoint payment, now net of expected continuation rent across the two states. To see optimality, any state-specific bonus above $V$ is weakly dominated by $V$ by the same payment argument, weighted by its state probability. With all bonuses at most $V$, the checkpoint payment is nonnegative and state-by-state maximization gives the stated bonuses. Completion is now $(1-q)F(V)+q$, increasing in $q$. The value of observing backup availability early is $(1-q)R(V)+qR(k)-R(K)$. It is positive for interior $q$ by strict convexity of $R$ between $k$ and $V$. The negative completion effect thus depends on having to act before knowing whether the fallback can be used, not on the portability of the checkpoint alone.
+
+The model does not compare early dispatch with waiting to start, and it does not characterize all dynamic mechanisms. It isolates an operational choice for a market for AI-agent work: whether to confirm backup capacity before posting or applying the completion bonus. An evaluation based solely on completion can rank designs differently from an evaluation based on the value of completed and partial work net of opportunity cost.
+
+\begin{thebibliography}{9}
+\bibitem[Andrade et~al.(2026)Andrade, Castro-Pires, and Moreira]{andrade}
+Andrade, R., Castro-Pires, H., and Moreira, H. (2026).
+The effect of exit rights on cost-based procurement contracts.
+\textit{Games and Economic Behavior}, 158, 299--316.
+\href{https://doi.org/10.1016/j.geb.2026.03.010}{doi:10.1016/j.geb.2026.03.010}.
+\bibitem[Green and Taylor(2016)]{green}
+Green, B., and Taylor, C. R. (2016).
+Breakthroughs, deadlines, and self-reported progress: Contracting for multistage projects.
+\textit{American Economic Review}, 106(12), 3660--3699.
+\href{https://doi.org/10.1257/aer.20151181}{doi:10.1257/aer.20151181}.
+\bibitem[Zhu(2026)]{zhu}
+Zhu, Q. (2026).
+Spot markets for AI inference: Dynamic capacity allocation and pricing on a shared accelerator fleet.
+Working paper. \href{https://arxiv.org/abs/2611.11215}{arXiv:2611.11215}.
+\end{thebibliography}
+\end{document}
