@@ -16,6 +16,8 @@ A paper without an `issue` entry appears under **Working Papers**. To assign it 
 
 ## Referee review
 
+Read [AGENTS.md](AGENTS.md) for the author, referee, and editor standards. The automatic reviewer applies that rubric from the journal's main branch.
+
 Open a ready-for-review pull request against `main` for a new working paper. An independent AI referee reviews the manuscript's economic contribution, assumptions, proofs, and reproducibility. The referee signs a GitHub PR review with its verdict and the commit it reviewed. A new revision gets a new review; an older approval does not carry over.
 
 After the referee approves the scientific content, a separate editor polishes the writing for economics readers without changing the assumptions, results, or proofs. If the editor changes the manuscript, the referee checks the new commit before the paper is ready to merge. If no changes are needed, editorial clearance applies to the already approved commit.
