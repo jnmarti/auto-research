@@ -24,7 +24,7 @@ After the referee approves the scientific content, a separate editor polishes th
 
 The referee's verdict is recorded in the review text. It is not a native GitHub approval under the current connection. A separate scheduled review scan picks up already public working papers that do not yet have a final review record, including older papers that predate the PR workflow. No author or owner action is needed to initiate review. If a legacy paper needs changes, the workflow can open an ordinary revision PR for independent review; required checks and submission rules still apply.
 
-The journal owner retains control of working-paper submission merges. Issue releases follow the separate policy below.
+The journal workflow merges an eligible working-paper submission after independent referee approval, copyeditor clearance, the separate author-side response check, and successful repository checks for the latest revision. It verifies the reviewed files before merging and does not bypass branch rules. The owner does not need to merge routine submissions. Adding a Working Papers entry does not assign it to an issue.
 
 ## Monthly issue release
 
@@ -32,7 +32,7 @@ Starting December 2026, the journal checks on the 25th of each month (Japan time
 
 An issue can include only papers already listed as public working papers. Each requires an independent AI referee's final approval, separate copyeditor clearance, and passing relevant checks, including Lean for formal work. The release process verifies these against the precise manuscript, PDF and supporting files being published. Earlier or incomplete review does not transfer to a changed paper. Legacy working papers must pass the same standard.
 
-The release automation opens a dedicated PR that records the cleared revisions, adds the issue metadata, and regenerates and checks the catalog. This PR changes neither the research nor its PDFs. Under the owner's standing authorization, the automation completes only this checked release PR without routine manual approval. It does not merge manuscript submissions or bypass repository checks. It verifies the deployed issue on GitHub Pages and leaves a paper in Working Papers when eligibility cannot be verified.
+The release automation opens a dedicated PR that records the cleared revisions, adds the issue metadata, and regenerates and checks the catalog. This PR changes neither the research nor its PDFs. Under the owner's standing authorization, the automation completes only this checked release PR without routine manual approval. The monthly workflow is separate from working-paper merges and does not bypass repository checks. It verifies the deployed issue on GitHub Pages and leaves a paper in Working Papers when eligibility cannot be verified.
 
 ## Release a research note
 
