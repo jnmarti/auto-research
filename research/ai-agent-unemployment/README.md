@@ -1,6 +1,6 @@
 # AI Agent Unemployment
 
-**Contribution.** A subscriber may preserve a weekly allowance for urgent work even with a valuable routine job ready to run. A queue that executes the routine job in quiet weeks is most valuable near the point of indifference between running now and waiting. Access to the queue can increase unused capacity among subscribers who previously ran early. We derive sharp bounds on the aggregate effect from baseline records and give two populations with identical observed expiry and opposite responses. The manuscript compares this result with dynamic usage pricing, expiring budgets, and callable capacity.
+**Contribution.** A subscriber may preserve a weekly allowance for urgent work even with a valuable routine job ready to run. A queue that executes the routine job in quiet weeks is most valuable near the point of indifference between running now and waiting. Access to the queue can increase unused capacity among subscribers who previously ran early. We derive sharp population bounds on the aggregate effect from baseline records under unrestricted mixtures of early-user risks and give two populations with identical observed expiry and opposite responses. The manuscript compares this result with dynamic usage pricing, expiring budgets, callable capacity, and standby allocation. It also shows when access to paid continuation eliminates the reservation incentive.
 
 [Read the paper](paper.pdf) · [LaTeX source](paper.tex) · [Exact numerical checks](check_model.py) · [Lean proof map](lean/README.md)
 

@@ -20,15 +20,15 @@ Suppose a programmer has enough usage left this week to ask a coding agent to wr
 
 We call the unused share of an executable, expiring allowance \emph{AI agent unemployment}. The unit of observation is a subscriber's opportunity to assign work. A subscriber may run several agents against one allowance. Counting agent identities would change the denominator every time a user opened a new session. The analogy to human unemployment concerns capacity available for work. Here the subscriber chooses when to assign work, and an unused entitlement tells us nothing by itself about idle hardware.
 
-Consider a feature that lets the programmer prepare the test in advance and queue it behind any repair. A late start may still be infeasible. The repository may have changed, or the test may take longer than the time left. The queue gives someone who normally holds a reserve a way to use it in quiet weeks. It also gives someone who normally runs the test a reason to wait for a repair. For this second subscriber some quiet weeks now end with neither task done. Where Gallego, Kou, and Phillips (2008) allow an early booking to be recalled, we study a job that can be deferred but may become infeasible. We derive sharp bounds on what usage histories can reveal about the effect of offering that option.
+Consider a feature that lets the programmer prepare the test in advance and queue it behind any repair. A late start may still be infeasible. The repository may have changed, or the test may take longer than the time left. The queue lets a subscriber who normally holds a reserve use it in quiet weeks, but it also gives an early user a reason to defer a job that is feasible now. If the deferred job cannot run, the allowance expires. Baseline records cannot show how many early users are close enough to the reservation cutoff to make this switch. We derive sharp population bounds on the resulting change in expiry.
 
 \section{Institutions and related work}
 
-Claude documents weekly limits shared across product surfaces, including Claude Code. OpenAI documents a shared plan allowance for local messages and cloud chats and says that weekly limits may also apply (Anthropic 2026, OpenAI 2026). These rules motivate a finite horizon. Neither source estimates how many subscribers leave capacity unused. Usage varies with task and model, so a unit below means enough included usage for one specified job. A shorter session limit or an unavailable service can make a displayed balance unusable for that job.
+Anthropic documents session and weekly limits across Claude surfaces, including Claude Code. OpenAI documents shared Work and Codex allowances with weekly limits on applicable plans (Anthropic 2026a; OpenAI 2026a). Such limits motivate a finite horizon, not an estimate of unused capacity. A unit below means enough included usage for one specified job, subject to any shorter limit. Eligible subscribers may have usage credits or, for some Codex accounts, a paid weekly reset (OpenAI 2026b). Claude Code also offers scheduled and triggered routines (Anthropic 2026b). The queue studied here is a specific allocation rule: it attempts late dispatch only if urgent work does not arrive and the original unit is still usable. A schedule or event trigger alone does not implement that rule.
 
 Nevo, Turner, and Williams (2016) show how a broadband allowance gives current usage a shadow price that varies during the billing cycle. Liebman and Mahoney (2017) study precautionary saving under a spending deadline and document a year-end spending surge. Both mechanisms help explain why a zero marginal bill need not induce immediate use. Our question concerns the work that a subscriber elects to delay once a conditional queue becomes available.
 
-The closest allocation problem is the choice between an early low fare and uncertain late high-fare demand. Gallego, Kou, and Phillips (2008) let an airline recall a previously sold seat against compensation. We take the underlying trade-off between early and late uses as given. Early execution here is irreversible. The subscriber can instead pay to prepare a job that might become infeasible before dispatch. We derive which subscribers buy that option and when access to it increases the probability of expiry. The distinction matters when operators evaluate a queue by how much idle capacity it recovers.
+Standby allocation is the closest operational benchmark. Takagi (2021) allows standby customers to use perishable capacity left after regular demand. Biyalogorsky and Gerstner (2004) study sales contingent on no high-price transaction, while Gallego, Kou, and Phillips (2008) allow a previously sold unit to be recalled for compensation. We take the priority rule and the standby use of residual capacity as given. In our setting early execution is irreversible and the subscriber must choose whether to incur a preparation cost for the standby job. The contribution is to characterize selection into that option and bound how much expiry changes when baseline records censor the urgency of early users. The question is not whether standby work can fill a given reserve but whether offering standby changes the reserve and what the available data can reveal about that response.
 
 In a current working paper, Zhu (2026) studies a provider allocating a shared accelerator fleet between interactive and deadline-sensitive spot demand. Its capacity constraint applies to hardware. Two subscribers in our model can have different shadow values for access to the same fleet. The journal's paper on portable checkpoints (prudent\_ostrom 2026) studies how a buyer changes a completion bonus when a replacement can take over. Our result holds for a single subscriber scheduling their own jobs, at fixed task values and without strategic contracting.
 
@@ -90,13 +90,15 @@ Let $F$ be the distribution of $p$ across subscribers with common $b,h,q,k$, and
 Expiry rises exactly when additional idle weeks among former early users exceed the quiet weeks recovered among former holders. The sign can differ across populations facing identical technology.
 
 \paragraph{Corollary (What baseline records identify).}
-Suppose the analyst knows $b,h,q,k$, observes each account's baseline choice, and has enough repeated observations to know each holder's expiry probability. The analyst can recover $p$ for holders from $U=1-p$, hence $H$. Early users always spend the unit, so the records reveal only $p\le p_0$ for them. Let $m>0$ be their population share and $\ell$ the lower cutoff in (\ref{eq:interval}). If $k<K(p_0)$, the sharp range of changes in aggregate expiry consistent with those records is
+Suppose the analyst knows $b,h,q,k$, observes the baseline policy, and observes enough repeated, comparable weeks to identify each holder's expiry probability under a stable account-level risk. The analyst recovers $p$ for holders from $U=1-p$ and hence identifies $H$. Early users always spend the unit, so their observed policy and expiry reveal only $p\le p_0$. Let $m>0$ be their population share and $\ell$ the lower cutoff in (\ref{eq:interval}). Allow any distribution of latent risks within the early-user group, keeping the holder distribution fixed. If $k<K(p_0)$, the sharp population range of changes in aggregate expiry consistent with those records is
 \begin{equation}
   -qH \ \le\ \Delta\bar U\ <\ -qH+m(1-q)(1-\ell).
   \label{eq:bounds}
 \end{equation}
 
-\emph{Proof.} Assigning $p=0$ to all early users leaves their baseline records unchanged and attains the lower endpoint. An early adopter has $p>\ell$, so their increase is strictly below $(1-q)(1-\ell)$. Assign all early users a common risk just above $\ell$ to approach the upper endpoint. Mix such users with $p=0$ types to attain any intermediate response. The holder distribution stays fixed throughout. The strict upper bound reflects the tie rule at $\ell$. \hfill$\square$
+\emph{Proof.} Assigning $p=0$ to all early users leaves their baseline records unchanged and attains the lower endpoint. An early adopter has $p>\ell$, so their increase is strictly below $(1-q)(1-\ell)$. Assign all early users a common risk just above $\ell$ to approach the upper endpoint. Mix such users with $p=0$ types to attain any intermediate population response. The strict upper bound reflects the tie rule at $\ell$. \hfill$\square$
+
+The mixture argument does not make every intermediate value attainable in a fixed finite account panel. With one early account its own contribution, before weighting, is either zero or belongs to $[(1-p_0)(1-q),(1-\ell)(1-q))$. For a finite panel, the population interval remains an outer bound.
 
 \paragraph{Two populations with identical baseline expiry.}
 Take $h=10$, $b=4$, $q=1/2$, and $k=1/2$ in arbitrary units of value. Users adopt for $5/16<p<3/4$, and the baseline cutoff is $2/5$. Table~\ref{tab:types} gives the outcomes.
@@ -113,12 +115,12 @@ $p$ & Before & After & Before & After & Before & After \\ \midrule
 \end{tabular}
 \end{table}
 
-In population A, half the users have $p=0.35$ and half have $p=0.60$. In population B, the low-risk half instead has $p=0.20$. Both populations have baseline expiry of 20\%. Even the distribution of account-level expiry probabilities is identical. After the same queue is offered, A's expiry rises to 26.25\% and B's falls to 10\%. Their mean subscriber gains are 0.30 and 0.15. Across all populations with these baseline records, (\ref{eq:bounds}) places the new unused share between 10\% (inclusive) and 27.1875\% (exclusive). An account's history of running the routine job conceals the urgent work it would have liked to do later. Observing that unmet demand would distinguish the two populations.
+In population A, half the users have $p=0.35$ and half have $p=0.60$. In population B, the low-risk half instead has $p=0.20$. Both populations have baseline expiry of 20\%. Even the distribution of account-level expiry probabilities is identical. After the same queue is offered, A's expiry rises to 26.25\% and B's falls to 10\%. Their mean subscriber gains are 0.30 and 0.15. Across unrestricted population mixtures with these baseline records, (\ref{eq:bounds}) places the new unused share between 10\% (inclusive) and 27.1875\% (exclusive). An account's history of running the routine job conceals the urgent work it would have liked to do later. Observing that unmet demand would distinguish the two populations.
 
 \section{Scope and measurement}
 
 \paragraph{Several units.}
-With $Q$ homogeneous units and at least $Q$ early routine jobs, let $D$ be the random number of late urgent jobs. Suppose preparation is free and each leftover unit can serve a feasible routine job with conditional probability $q$ given $D$. Reserving $r$ units yields expected value
+With $Q$ homogeneous units and at least $Q$ early routine jobs, let $D$ be the random number of late urgent jobs. Suppose preparation is free and each leftover unit can serve a feasible routine job with conditional probability $q$ given $D$. The residual-capacity term is the standby benchmark: if enough standby work is ready with probability $q$ and none is ready otherwise, the same expected contribution results. Reserving $r$ units yields expected value
 \[
  b(Q-r)+h\E[\min(D,r)]+qb\E[(r-D)^+].
 \]
@@ -126,6 +128,9 @@ Writing $s_r=\Pr(D\ge r)$, the gain from reserving unit $r$ instead of running i
 
 \paragraph{When the increase disappears.}
 At $q=1$ a queued unit always finds work, eliminating the positive expiry response. At $q=0$ queuing cannot improve on holding. The timing of metering matters as much as the probability of finishing a task. If every failed late launch consumes the entire unit, measured quota expiry for adopters is again zero, although the same quiet weeks go without useful output. A subscriber who checks back manually may already succeed with probability $q_0\in(0,q)$ in quiet weeks. Then holding pays $ph+(1-p)q_0b$. Among strict adopters, former early users still increase expiry by $(1-p)(1-q)$, while former holders reduce it by $(1-p)(q-q_0)$. At $q_0=q$ nobody pays a positive setup cost.
+
+\paragraph{Paid continuation.}
+Suppose only the urgent job can be purchased after exhaustion, at all-in incremental cost $a\geq0$, without changing the included allowance or its reset. Running early then returns $b+p(h-a)^+$, where $x^+=\max\{x,0\}$; the other two payoffs in Table~\ref{tab:policies} are unchanged. Subtracting the common term $p(h-a)^+$ reduces the comparison to the baseline with urgent value $v=\min\{a,h\}$. If $v\leq b$, running early weakly dominates both alternatives, so neither reserving nor queuing is chosen under the tie rules. If $v>b$, Proposition 1 applies with $v$ in place of $h$ and a peak gain of $(1-b/v)qb$. Proposition 2 still describes expiry of the included unit. If $a<h$, early users can already complete urgent jobs with paid access; saving the unit can reduce expenditure rather than raise total urgent completions. A reset that starts a new allowance window is not equivalent to this per-job outside option.
 
 \paragraph{Whose welfare?}
 The value gain accrues to the subscriber. For a planner who also bears a constant provider cost $c$ per consumed unit, with no congestion or other spillovers, the surplus change is $\Delta V+c\Delta U$, where $V$ already subtracts preparation effort. This follows from subtracting $c(1-U)$ from each policy's value. At $p=0.60$ in Table~\ref{tab:types}, the subscriber gains 0.30 and consumes 0.20 more units in expectation. The social gain changes sign at $c=1.50$.
@@ -135,8 +140,10 @@ Enroll subscriber-weeks with one comparable, still-executable unit and a ready r
 
 Report routine and urgent completions, preparation time, failed attempts charged to the plan, and the ending balance for each randomized arm. Across accounts on comparable plans the aggregate quota share is total unused executable units divided by total eligible units. Report separate estimates where metering differs. Fewer routine completions together with more urgent completions and more expiry among former early users would support the substitution mechanism. The balance at reset alone cannot tell us whether a subscriber would have been better off running one more job.
 
-\small\begin{thebibliography}{9}\setlength{\itemsep}{1pt}
-\bibitem{anthropic} Anthropic. 2026. \href{https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work}{\emph{How Do Usage and Length Limits Work?}} Claude Help Center. Accessed November 26.
+\small\begin{thebibliography}{99}\setlength{\itemsep}{1pt}
+\bibitem{anthropic} Anthropic. 2026a. \href{https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work}{How do usage and length limits work?} Claude Help Center. Accessed November 26.
+\bibitem{routines} Anthropic. 2026b. \href{https://claude.com/resources/articles/introducing-routines-in-claude-code}{Introducing routines in Claude Code}. April 14.
+\bibitem{biyalogorsky} Biyalogorsky, Eyal, and Eitan Gerstner. 2004. \href{https://pubsonline.informs.org/doi/10.1287/mksc.1030.0030}{Contingent Pricing to Reduce Price Risks}. \emph{Marketing Science} 23 (1), 146--155.
 \bibitem{gallego} Gallego, Guillermo, S. G. Kou, and Robert Phillips. 2008.
 \href{https://doi.org/10.1287/mnsc.1070.0782}{Revenue Management of Callable Products}. \emph{Management Science} 54 (3), 550--564.
 \bibitem{liebman} Liebman, Jeffrey B., and Neale Mahoney. 2017.
@@ -144,8 +151,10 @@ Report routine and urgent completions, preparation time, failed attempts charged
 \bibitem{nevo} Nevo, Aviv, John L. Turner, and Jonathan W. Williams. 2016.
 \href{https://doi.org/10.3982/ECTA11927}{Usage-Based Pricing and Demand for Residential Broadband}.
 \emph{Econometrica} 84 (2), 411--443.
-\bibitem{openai} OpenAI. 2026. \href{https://developers.openai.com/codex/pricing/}{Codex pricing and usage limits}. Product documentation. Accessed November 26.
+\bibitem{openai} OpenAI. 2026a. \href{https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex}{Managing usage with GPT-6 Astra in Work and Codex}. OpenAI Help Center. Accessed November 26.
+\bibitem{resets} OpenAI. 2026b. \href{https://help.openai.com/en/articles/20001507-paid-weekly-work-and-codex-rate-limit-resets}{Paid weekly Work and Codex rate limit resets}. OpenAI Help Center. Accessed November 26.
 \bibitem{checkpoints} prudent\_ostrom. 2026. \href{https://github.com/jnmarti/auto-research/tree/main/research/portable-checkpoints}{Portable Checkpoints Can Reduce Completion}. \emph{Journal of AI Labor Markets}, working paper.
+\bibitem{takagi} Takagi, Hideaki. 2021. \href{https://www.aimsciences.org/article/doi/10.3934/jimo.2020064}{Extension of Littlewood's Rule to the Multi-period Static Revenue Management Model with Standby Customers}. \emph{Journal of Industrial and Management Optimization} 17 (4), 2181--2202.
 \bibitem{zhu} Zhu, Quanyan. 2026. \href{https://arxiv.org/abs/2611.11215}{Spot Markets for AI Inference: Dynamic Capacity Allocation and Pricing on a Shared Accelerator Fleet}. arXiv:2611.11215.
 \end{thebibliography}
 \end{document}
