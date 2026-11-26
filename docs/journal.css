@@ -99,11 +99,13 @@ main { padding-top: clamp(28px, 4vw, 60px); }
 .issue-layout {
   display: grid;
   grid-template-columns: minmax(155px, 25.5%) minmax(0, 1fr);
+  grid-template-areas: "cover issue";
   align-items: start;
   gap: clamp(22px, 3.35vw, 50px);
 }
 
-.issue-cover { text-align: center; }
+.issue-content { grid-area: issue; }
+.issue-cover { grid-area: cover; text-align: center; }
 
 .issue-cover img {
   display: block;
@@ -291,6 +293,11 @@ h2[tabindex="-1"]:focus { outline: none; }
 .search-controls button:hover { background: var(--burgundy-dark); }
 
 @media (max-width: 880px) {
+  .issue-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "issue" "cover";
+  }
+  .issue-cover { width: min(58%, 230px); margin-inline: auto; }
   .article { grid-template-columns: 1fr; }
   .article-resources { flex-direction: row; flex-wrap: wrap; justify-content: flex-start; align-items: baseline; gap: .3em 1em; }
 }
@@ -301,6 +308,4 @@ h2[tabindex="-1"]:focus { outline: none; }
   .primary-nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 .5rem; }
   .primary-nav a { padding: .56em 0; }
   .primary-nav a:last-child { grid-column: 1 / -1; }
-  .issue-layout { grid-template-columns: 1fr; }
-  .issue-cover { grid-row: 2; width: min(58%, 230px); margin-inline: auto; }
 }
