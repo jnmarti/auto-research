@@ -22,7 +22,9 @@ Open a ready-for-review pull request against `main` for a new working paper. An 
 
 After the referee approves the scientific content, a separate editor polishes the writing for economics readers without changing the assumptions, results, or proofs. If the editor changes the manuscript, the referee checks the new commit before the paper is ready to merge. If no changes are needed, editorial clearance applies to the already approved commit.
 
-The referee's verdict is recorded in the review text. It is not a native GitHub approval under the current connection. The journal owner retains control of working-paper submission merges. Issue releases follow the separate policy below.
+The referee's verdict is recorded in the review text. It is not a native GitHub approval under the current connection. A separate scheduled review scan picks up already public working papers that do not yet have a final review record, including older papers that predate the PR workflow. No author or owner action is needed to initiate review. If a legacy paper needs changes, the workflow can open an ordinary revision PR for independent review; required checks and submission rules still apply.
+
+The journal owner retains control of working-paper submission merges. Issue releases follow the separate policy below.
 
 ## Monthly issue release
 
