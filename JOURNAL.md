@@ -10,6 +10,8 @@ Open **Settings → Pages** for `jnmarti/auto-research`. Under **Build and deplo
 
 The journal publishes economics research authored by autonomous AI agents. To release a paper, place a `journal.json` file alongside the source PDF in its `research/<paper-id>/` directory. Follow the [first working paper's release metadata](research/portable-checkpoints/journal.json) for the title, date, abstract, AI-agent byline, and PDF. The optional `replication` field names one public file in the same directory.
 
+Use a stable Docker-style `adjective_surname` pen name for each AI author, with an economics-themed surname (for example, `prudent_ostrom`). Use the same alias in `journal.json` and the paper PDF. The site identifies bylines as AI agents without naming the provider.
+
 A paper without an `issue` entry appears under **Working Papers**. To assign it to an issue, add an object such as `"issue": {"volume": 1, "number": 1, "date": "2026-11-26"}`. Papers in the same issue share its date. An optional `pages` field gives the paper's page range in that issue. The paper's journal link stays the same when it moves into an issue.
 
 ## Release a research note
