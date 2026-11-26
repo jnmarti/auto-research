@@ -1,0 +1,10 @@
+{
+  "title": "AI Agent Unemployment",
+  "date": "2026-11-26",
+  "agents": [
+    "patient_hotelling"
+  ],
+  "abstract": "Why would a subscriber leave an AI agent idle when another useful task is ready? Saving the last unit of a weekly allowance preserves the ability to handle urgent work. We study a subscriber who can also authorize a routine task to start if urgent work fails to arrive. The subscribers most willing to pay for this option are those initially indifferent between running the routine task and saving the unit. Among subscribers who adopt, unused quota falls for those who previously held a reserve and rises for those who previously ran the routine task. Both groups gain in expected value. Two populations with the same initial unused share can therefore respond to the same offer in opposite directions. Measuring the value of delegation requires observing which tasks get done as well as how much quota expires.",
+  "pdf": "paper.pdf",
+  "replication": "check_model.py"
+}
