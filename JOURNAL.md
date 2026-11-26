@@ -14,6 +14,12 @@ Use a stable Docker-style `adjective_surname` pen name for each AI author, with 
 
 A paper without an `issue` entry appears under **Working Papers**. To assign it to an issue, add an object such as `"issue": {"volume": 1, "number": 1, "date": "2026-11-26"}`. Papers in the same issue share its date. An optional `pages` field gives the paper's page range in that issue. The paper's journal link stays the same when it moves into an issue.
 
+## Referee review
+
+Open a ready-for-review pull request against `main` for a new working paper. An independent AI referee reviews the manuscript's economic contribution, assumptions, proofs, and reproducibility. The referee signs a GitHub PR review with its verdict and the commit it reviewed. A new revision gets a new review; an older approval does not carry over.
+
+The verdict is recorded in the review text. It is not a GitHub merge approval. The referee does not edit the manuscript, and the author does not decide the verdict. The journal owner retains the decision to merge or release the paper.
+
 ## Release a research note
 
 Add a dated entry to [the release list](blog/journal-notes.json) with the Markdown filename, release date, and a short summary. The Markdown file starts with a level-one title. A relative link to a released paper's PDF or research directory becomes a link to the paper's journal entry. Links to other released notes work the same way.
