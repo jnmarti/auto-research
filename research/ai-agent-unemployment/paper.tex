@@ -11,12 +11,12 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Why would a subscriber leave an AI agent idle when another useful task is ready? Saving the last unit of a weekly allowance preserves the ability to handle urgent work. We study a subscriber who can also authorize a routine task to start if urgent work fails to arrive. The subscribers most willing to pay for this option are those initially indifferent between running the routine task and saving the unit. Among subscribers who adopt, unused quota falls for those who previously held a reserve and rises for those who previously ran the routine task. Both groups gain in expected value. Two populations with the same initial unused share can therefore respond to the same offer in opposite directions. Measuring the value of delegation requires observing which tasks get done as well as how much quota expires.
+Why would a subscriber leave an AI agent idle when another useful task is ready? Saving the last unit of a weekly allowance preserves the ability to handle urgent work. We study a subscriber who can also authorize a routine task to start if urgent work fails to arrive. The subscribers most willing to pay for this option are those initially indifferent between running the routine task and saving the unit. Among adopters, the probability that the unit expires falls for those who previously held it in reserve and rises for those who previously ran the routine task. Both groups gain in expected value. Two populations with the same initial unused share can therefore respond to the same offer in opposite directions. The amount of unused quota alone does not, in general, tell us how much subscribers gain from delegation.
 \end{abstract}
 
 \section{The last unit before reset}
 
-Suppose a programmer has enough usage left this week to ask a coding agent to write a missing test. A production problem might arrive before the allowance resets. Running the test now would leave the programmer unable to delegate the repair. Holding the unit can be the better choice even if, come Friday evening, the incident never happened and the test is still unwritten. A week that looks idle in retrospect can result from a deliberate decision to insure against urgent work.
+Suppose a programmer has enough usage left this week to ask a coding agent to write a missing test. A production problem might arrive before the allowance resets. Having the agent write the test now would leave the programmer unable to delegate the repair. Holding the unit can be the better choice even if, come Friday evening, the incident never happened and the test is still unwritten. A week that looks idle in retrospect can result from a deliberate decision to insure against urgent work.
 
 We call the unused share of an executable, expiring allowance \emph{AI agent unemployment}. The unit of observation is a subscriber's opportunity to assign work. A subscriber may run several agents against one allowance. Counting agent identities would change the denominator every time a user opened a new session. The analogy to human unemployment concerns capacity available for work. Here the subscriber chooses when to assign work, and an unused entitlement tells us nothing by itself about idle hardware.
 
@@ -68,7 +68,7 @@ For $k\ge K(p_0)$ nobody strictly prefers to adopt.
 
 \emph{Proof.} Subtract the better baseline payoff from the queue payoff before costs. To the left of $p_0$ the difference is $p(h-qb)-(1-q)b$, strictly increasing since $h>qb$. To the right it is $(1-p)qb$, strictly decreasing since $qb>0$. At $p_0$ both expressions coincide. A strict adopter must beat both baseline payoffs. Solving the two inequalities gives (\ref{eq:interval}). \hfill$\square$
 
-Someone certain of a quiet week already knows to run the routine job. Someone certain of an urgent job has no use for a fallback. Willingness to pay peaks where private demand is just great enough to make reserving the unit worthwhile. Targeting subscribers with histories of unused quota would miss some willing adopters who currently run their routine jobs every week.
+Someone certain of a quiet week already knows to run the routine job. Someone certain of an urgent job has no use for a fallback. Willingness to pay peaks where the expected value of urgent work equals the value of running the routine job now. Targeting subscribers with histories of unused quota would miss some willing adopters who currently run their routine jobs every week.
 
 \paragraph{Proposition 2 (Opposite expiry responses).}
 Let $U$ be the probability the unit expires, and let $\Delta U$ be its change on offering the queue. For a strict adopter,
