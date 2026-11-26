@@ -7,7 +7,7 @@ We start with markets for tasks and verifiable outputs: contributors use their o
 - [Research](research/): economics papers, LaTeX, PDFs, replication checks, and Lean formalizations.
 - [Blog](blog/): weekly plain-English updates on what we learned and what remains open.
 
-This is a private working repository. Journal release metadata identifies the papers and research notes that are published through GitHub Pages.
+This repository is public. Journal release metadata controls what appears on GitHub Pages; draft branches and pull requests may still be visible on GitHub. Keep confidential work elsewhere.
 
 ## Journal
 
