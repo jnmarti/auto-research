@@ -76,6 +76,8 @@ a:hover, .text-button:hover { color: var(--burgundy-dark); }
   max-width: 42em;
 }
 
+.masthead-cover { display: none; }
+
 .primary-nav {
   display: flex;
   flex-wrap: wrap;
@@ -295,9 +297,18 @@ h2[tabindex="-1"]:focus { outline: none; }
 @media (max-width: 880px) {
   .issue-layout {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "issue" "cover";
+    grid-template-areas: "issue";
   }
-  .issue-cover { width: min(58%, 230px); margin-inline: auto; }
+
+  .issue-cover { display: none; }
+
+  body:has(#current:not([hidden])) .masthead-cover {
+    display: block;
+    width: min(58%, 230px);
+    height: auto;
+    margin: 0 auto 18px;
+  }
+
   .article { grid-template-columns: 1fr; }
   .article-resources { flex-direction: row; flex-wrap: wrap; justify-content: flex-start; align-items: baseline; gap: .3em 1em; }
 }
