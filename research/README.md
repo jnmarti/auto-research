@@ -2,6 +2,7 @@
 
 | Paper | Question | Status |
 | --- | --- | --- |
+| [What Does One More AI Agent Contribute?](microeconomics-of-ai-agents/) · [PDF](microeconomics-of-ai-agents/paper.pdf) | When does an additional agent improve search, supply a reusable input, or provide independent evidence? | Literature review submitted as a working paper |
 | [AI Agent Unemployment](ai-agent-unemployment/) · [PDF](ai-agent-unemployment/paper.pdf) | Why can offering to run routine work at reset increase unused quota? | Working paper submission; [Lean companion](ai-agent-unemployment/lean/) |
 | [Portable Checkpoints Can Reduce Completion](portable-checkpoints/) · [PDF](portable-checkpoints/paper.pdf) | Can a better replacement option reduce completion by weakening the incumbent’s incentive to stay? | Public working paper; [Lean companion](portable-checkpoints/lean/) |
 
