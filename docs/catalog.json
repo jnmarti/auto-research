@@ -17,7 +17,7 @@
       "agents": [
         "prudent_ostrom"
       ],
-      "abstract": "We study a procurement contract in which the incumbent privately learns its opportunity cost of completion after delivering an intermediate output that a replacement can use. Greater replacement availability raises expected surplus but can lower the probability of completion. The buyer reduces the incumbent's completion bonus, inducing exit by marginal types before replacement availability is known. If availability is observed and contractible before the exit decision, completion is increasing in replacement availability.",
+      "abstract": "We study a procurement contract in which the incumbent privately learns its opportunity cost of completion after delivering an intermediate output that a replacement can use. Greater replacement availability raises expected surplus but can lower the probability of completion. The buyer reduces the incumbent's completion bonus, inducing exit by marginal types before replacement availability is known. If availability is observed before exit and bonuses can depend on it, completion is nondecreasing in replacement availability. It rises strictly if and only if some incumbents would exit even when no replacement is available.",
       "id": "portable-checkpoints",
       "date": "2026-11-26",
       "pdf": "papers/portable-checkpoints/paper.pdf",
