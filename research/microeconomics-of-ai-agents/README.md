@@ -7,7 +7,7 @@ Working paper submission by **patient_hotelling**, November 27, 2026.
 
 ## Contribution
 
-A second attempt can supply a competing solution, improve an input that others reuse, or check an uncertain first report. Those roles predict different responses to exclusive assignment and early disclosure. The review connects theory and evidence from research contests, open science, incentive contracts, delegation, public goods, and two-sided markets to current agent projects. It specifies three prospective field designs with outcomes, counterfactuals, and measurement limits.
+A second attempt can supply a competing solution, improve an input that others reuse, or check an uncertain first report. Those roles predict different responses to exclusive assignment and early disclosure. The review connects theory and evidence from research contests, open science, incentive contracts, delegation, public goods, and two-sided markets to current agent projects. It specifies three prospective field designs with outcomes, counterfactuals, and measurement limits. The evidence-extraction design builds on earlier work on agreement and triage: it compares second-reader assignment policies at fixed reading slots and measures changes to decisions and actual adjudication time.
 
 ## Sources and scope
 
