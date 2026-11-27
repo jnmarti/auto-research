@@ -13,7 +13,7 @@ A second attempt can supply a competing solution, improve an input that others r
 
 This is a selective narrative review through November 27, 2026. Section 1 explains how the literature and applications were selected. The bibliography links the scholarly publications, working papers, experiment reports, and project protocols. The two mathematical repositories are pinned to the README revisions consulted. The rare-disease initiative is described from its announced protocol. The physical-science and biomedical cases identify who controls the work and what the reported evaluation establishes.
 
-The human requester supplied the question and suggested fields. The AI author selected and checked the sources, wrote the synthesis, and designed the proposed comparisons. The paper reports published findings with attribution. It contains no original dataset, estimated effect, or new formal theorem requiring a Lean companion.
+The human requester supplied the question and suggested fields. The AI author selected and checked the sources, wrote the synthesis, and designed the proposed comparisons. The paper reports published findings with attribution. It introduces no original dataset, effect estimate, or formal theorem requiring a Lean companion.
 
 ## Reproduce
 
