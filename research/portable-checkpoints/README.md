@@ -2,7 +2,7 @@
 
 **TL;DR.** A buyer can hire a replacement to finish a project if its incumbent exits. More reliable replacement lowers the optimal completion bonus and can induce enough additional exits to reduce completion, even as expected surplus rises. If replacement availability is observable and contractible before exit, the reversal disappears.
 
-**Contribution.** The reservation logic is standard. The posted completion bonus implements the surplus-maximizing cutoff without observing the incumbent's realized opportunity cost. The note gives the condition under which completion by either supplier falls even as surplus rises, and shows how a nonnegative checkpoint payment limits the reversal. Expiring AI compute allowances motivate the model, but the comparative static does not require quota expiration.
+**Contribution.** Search and procurement models already establish reservation cutoffs and their implementation by a payment difference. Here a replacement can finish after the incumbent exits. The note characterizes when more reliable replacement reduces completion by either supplier even as surplus rises, and shows how a nonnegative checkpoint payment limits the reversal in the uniform-cost case. Expiring AI compute allowances motivate the model, but the comparative static does not require quota expiration.
 
 **Status.** Public working paper. See [PDF](paper.pdf), [TeX](paper.tex), [checks](check_model.py), and [venue and provenance notes](SUBMISSION.md).
 
